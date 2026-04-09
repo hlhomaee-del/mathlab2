@@ -1,0 +1,617 @@
+11:58 AM<tool_calls>
+<invoke name="view">
+<parameter name="path">/mnt/skills/public/frontend-design/SKILL.md</parameter>
+<parameter name="description">Check frontend design guidelines</parameter>
+</invoke>
+</tool_calls>
+<tool_calls>
+<invoke name="create_file">
+<parameter name="description">Create the Insurance Math Interactive Mastery Lab - complete single HTML file with animations, sound effects, and highly interactive design</parameter>
+<parameter name="path">/mnt/user-data/outputs/insurance-math-lab.html</parameter>
+<parameter name="file_text"><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insurance Math Interactive Mastery Lab</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--pink:#ec4899;--purple:#a855f7;--teal:#14b8a6;--blue:#3b82f6;
+--yellow:#fbbf24;--green:#22c55e;--red:#ef4444;--orange:#f97316;
+--bg:#fdf2f8;--sf:#fff;--tx:#1e1b4b;--tx2:#6b7280;
+--r:16px;--sh:0 4px 20px rgba(168,85,247,.12);
+}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;overflow-x:hidden}
+/* Floating particles */
+.particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
+.particle{position:absolute;border-radius:50%;opacity:.3;animation:floatP linear infinite}
+@keyframes floatP{0%{transform:translateY(100vh) rotate(0deg)}100%{transform:translateY(-100px) rotate(720deg)}}
+/* Header */
+header{background:linear-gradient(135deg,#ec4899,#a855f7,#3b82f6);color:#fff;padding:1.2rem 1rem;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 4px 30px rgba(168,85,247,.3)}
+header h1{font-size:clamp(1rem,3vw,1.5rem);font-weight:900;text-shadow:0 2px 10px rgba(0,0,0,.2)}
+header h1 .emoji{display:inline-block;animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.stats{display:flex;justify-content:center;gap:1.5rem;margin-top:.4rem;font-size:.85rem;font-weight:700;flex-wrap:wrap}
+.stats span{background:rgba(255,255,255,.2);padding:.2rem .7rem;border-radius:20px;backdrop-filter:blur(5px)}
+.xp-bar{width:100%;max-width:400px;margin:.5rem auto 0;background:rgba(255,255,255,.2);border-radius:20px;height:10px;overflow:hidden}
+.xp-fill{height:100%;background:linear-gradient(90deg,#fbbf24,#22c55e);border-radius:20px;transition:width .8s cubic-bezier(.4,0,.2,1);width:0%}
+/* Nav */
+nav{display:flex;overflow-x:auto;background:var(--sf);border-bottom:3px solid #f3e8ff;padding:.3rem;gap:.2rem;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+.nav-btn{flex-shrink:0;padding:.6rem .8rem;border:none;background:none;font-size:.72rem;font-weight:700;color:var(--tx2);cursor:pointer;border-radius:12px;transition:all .3s;white-space:nowrap;font-family:inherit}
+.nav-btn:hover{background:#fce7f3;color:var(--pink);transform:scale(1.05)}
+.nav-btn.on{background:linear-gradient(135deg,#ec4899,#a855f7);color:#fff;box-shadow:0 4px 15px rgba(168,85,247,.3)}
+.nav-btn.dn::after{content:'✨';margin-left:.2rem}
+/* Main */
+main{max-width:920px;margin:0 auto;padding:1.2rem .8rem 4rem;position:relative;z-index:1}
+.sec{display:none;animation:popIn .4s cubic-bezier(.4,0,.2,1)}.sec.on{display:block}
+@keyframes popIn{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:none}}
+/* Cards */
+.card{background:var(--sf);border-radius:var(--r);padding:1.3rem;margin-bottom:1rem;box-shadow:var(--sh);border:2px solid transparent;transition:all .3s}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(168,85,247,.15)}
+.card-pink{border-color:#fbcfe8;background:linear-gradient(135deg,#fff,#fdf2f8)}
+.card-purple{border-color:#e9d5ff;background:linear-gradient(135deg,#fff,#faf5ff)}
+.card-teal{border-color:#99f6e4;background:linear-gradient(135deg,#fff,#f0fdfa)}
+.card-blue{border-color:#bfdbfe;background:linear-gradient(135deg,#fff,#eff6ff)}
+.card-yellow{border-color:#fde68a;background:linear-gradient(135deg,#fff,#fffbeb)}
+.card-green{border-color:#bbf7d0;background:linear-gradient(135deg,#fff,#f0fdf4)}
+h2{font-size:1.4rem;font-weight:900;margin-bottom:.7rem;background:linear-gradient(135deg,var(--pink),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+h3{font-size:1.05rem;font-weight:800;margin-bottom:.5rem;color:var(--purple)}
+p{margin-bottom:.5rem;font-size:.92rem}
+.tag{display:inline-block;padding:.15em .5em;border-radius:20px;font-size:.7rem;font-weight:800;text-transform:uppercase}
+.tag-pink{background:#fce7f3;color:#be185d}.tag-purple{background:#f3e8ff;color:#7c3aed}
+.tag-teal{background:#ccfbf1;color:#0f766e}.tag-blue{background:#dbeafe;color:#1d4ed8}
+.tag-green{background:#dcfce7;color:#15803d}.tag-yellow{background:#fef3c7;color:#92400e}
+/* Concept Cards */
+.concept-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.7rem;margin:.8rem 0}
+.concept-card{background:var(--sf);border:2px solid #e9d5ff;border-radius:14px;padding:1rem;cursor:pointer;transition:all .3s;text-align:center;position:relative;overflow:hidden}
+.concept-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--pink),var(--purple))}
+.concept-card:hover{transform:translateY(-5px) scale(1.02);box-shadow:0 10px 30px rgba(168,85,247,.2);border-color:var(--purple)}
+.concept-card .icon{font-size:2rem;margin-bottom:.3rem}
+.concept-card .title{font-weight:800;font-size:.85rem;color:var(--purple)}
+.concept-card .def{display:none;font-size:.78rem;color:var(--tx2);margin-top:.4rem;text-align:left}
+.concept-card.open .def{display:block;animation:popIn .3s}
+.concept-card.open{border-color:var(--pink);background:#fdf2f8}
+/* Quiz */
+.qq{font-weight:800;margin-bottom:.6rem;padding:.7rem;background:linear-gradient(135deg,#fce7f3,#f3e8ff);border-radius:14px;font-size:.92rem;border-left:4px solid var(--purple)}
+.qo{display:block;width:100%;padding:.6rem .9rem;border:2px solid #e9d5ff;border-radius:12px;cursor:pointer;transition:all .25s;font-size:.86rem;background:var(--sf);text-align:left;font-weight:600;margin-bottom:.35rem;font-family:inherit;position:relative;overflow:hidden}
+.qo::before{content:'';position:absolute;top:0;left:0;width:0;height:100%;background:rgba(168,85,247,.05);transition:width .3s}
+.qo:hover:not(.x){border-color:var(--purple);transform:translateX(6px);box-shadow:0 4px 15px rgba(168,85,247,.1)}.qo:hover:not(.x)::before{width:100%}
+.qo.y{border-color:var(--green);background:linear-gradient(135deg,#f0fdf4,#dcfce7);color:#15803d;animation:correctPop .5s}
+.qo.n{border-color:var(--red);background:linear-gradient(135deg,#fff1f2,#fee2e2);color:#b91c1c;animation:shake .4s}
+.qo.x{cursor:default;opacity:.75}.qo.x:hover{transform:none;box-shadow:none}
+@keyframes correctPop{0%{transform:scale(1)}50%{transform:scale(1.03)}100%{transform:scale(1)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.fb{margin-top:.5rem;padding:.7rem;border-radius:12px;font-size:.83rem;display:none;font-weight:600}
+.fb.v{display:block;animation:popIn .3s}.fb.y{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:2px solid #86efac;color:#15803d}
+.fb.n{background:linear-gradient(135deg,#fff1f2,#fee2e2);border:2px solid #fca5a5;color:#b91c1c}
+/* Math Steps */
+.math-box{background:linear-gradient(135deg,#faf5ff,#f3e8ff);border:2px solid #e9d5ff;border-radius:14px;padding:1rem;margin:.6rem 0;font-family:'Courier New',monospace;font-size:.88rem;font-weight:700}
+.math-step{padding:.3rem 0;border-bottom:1px dashed #d8b4fe;display:flex;justify-content:space-between}
+.math-step:last-child{border:none;color:var(--purple);font-size:1rem}
+.math-step .label{color:var(--tx2)}
+/* Insurance Card Sim */
+.ins-card{background:linear-gradient(135deg,#1e1b4b,#4c1d95,#7c3aed);color:#fff;border-radius:16px;padding:1.2rem;margin:.8rem 0;box-shadow:0 8px 30px rgba(76,29,148,.3);max-width:420px;position:relative;overflow:hidden}
+.ins-card::before{content:'';position:absolute;top:-50%;right:-50%;width:100%;height:100%;background:radial-gradient(circle,rgba(255,255,255,.1),transparent);pointer-events:none}
+.ins-card h4{color:#c4b5fd;font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem}
+.ins-card .plan-name{font-size:1.1rem;font-weight:900;margin-bottom:.6rem}
+.ins-card .row{display:flex;justify-content:space-between;margin:.2rem 0;font-size:.82rem}
+.ins-card .lbl{opacity:.6;font-size:.72rem}.ins-card .val{font-weight:800}
+.ins-card .chip{display:inline-block;padding:.15rem .5rem;border-radius:8px;font-size:.68rem;font-weight:800;margin-top:.3rem}
+.chip-active{background:#22c55e;color:#fff}.chip-inactive{background:#ef4444;color:#fff}
+.chip-hmo{background:#fbbf24;color:#1e1b4b}.chip-ppo{background:#3b82f6;color:#fff}
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.55rem 1.1rem;border:none;border-radius:12px;font-size:.86rem;font-weight:700;cursor:pointer;transition:all .3s;font-family:inherit;position:relative;overflow:hidden}
+.btn::after{content:'';position:absolute;top:50%;left:50%;width:0;height:0;background:rgba(255,255,255,.3);border-radius:50%;transform:translate(-50%,-50%);transition:width .4s,height .4s}
+.btn:active::after{width:200px;height:200px}
+.btn-pink{background:linear-gradient(135deg,#ec4899,#be185d);color:#fff;box-shadow:0 4px 15px rgba(236,72,153,.3)}
+.btn-pink:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(236,72,153,.4)}
+.btn-purple{background:linear-gradient(135deg,#a855f7,#7c3aed);color:#fff;box-shadow:0 4px 15px rgba(168,85,247,.3)}
+.btn-purple:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(168,85,247,.4)}
+.btn-teal{background:linear-gradient(135deg,#14b8a6,#0f766e);color:#fff;box-shadow:0 4px 15px rgba(20,184,166,.3)}
+.btn-green{background:linear-gradient(135deg,#22c55e,#15803d);color:#fff;box-shadow:0 4px 15px rgba(34,197,94,.3)}
+.btn-s{background:var(--sf);color:var(--purple);border:2px solid #e9d5ff}
+/* Tracker Bars */
+.tracker{margin:.5rem 0}
+.tracker-label{display:flex;justify-content:space-between;font-size:.78rem;font-weight:700;margin-bottom:.2rem}
+.tracker-bar{background:#f3e8ff;border-radius:20px;height:14px;overflow:hidden;position:relative}
+.tracker-fill{height:100%;border-radius:20px;transition:width .8s cubic-bezier(.4,0,.2,1);position:relative}
+.tracker-fill::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);animation:shimmer 2s infinite}
+@keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.fill-pink{background:linear-gradient(90deg,#ec4899,#f472b6)}
+.fill-purple{background:linear-gradient(90deg,#a855f7,#c084fc)}
+.fill-teal{background:linear-gradient(90deg,#14b8a6,#2dd4bf)}
+.fill-green{background:linear-gradient(90deg,#22c55e,#4ade80)}
+.fill-blue{background:linear-gradient(90deg,#3b82f6,#60a5fa)}
+/* Badges */
+.badges{display:flex;flex-wrap:wrap;gap:.5rem;margin:.7rem 0}
+.badge{padding:.35rem .6rem;border-radius:20px;font-size:.72rem;font-weight:800;border:2px solid #e9d5ff;opacity:.35;transition:all .3s;background:var(--sf)}
+.badge.got{opacity:1;border-color:var(--yellow);background:linear-gradient(135deg,#fffbeb,#fef3c7);animation:badgePop .6s cubic-bezier(.4,0,.2,1)}
+@keyframes badgePop{0%{transform:scale(1)}40%{transform:scale(1.2)}100%{transform:scale(1)}}
+/* Timer */
+.timer{font-size:2rem;font-weight:900;text-align:center;color:var(--purple);font-variant-numeric:tabular-nums}
+.timer.warn{color:var(--orange)}.timer.danger{color:var(--red);animation:pu 1s infinite}
+@keyframes pu{50%{opacity:.5}}
+/* Confetti */
+.confetti-piece{position:fixed;width:10px;height:10px;z-index:200;pointer-events:none;animation:confettiFall linear forwards}
+@keyframes confettiFall{0%{transform:translateY(-10px) rotate(0);opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}
+/* Accordion */
+.acc{border:2px solid #e9d5ff;border-radius:14px;margin-bottom:.4rem;overflow:hidden}
+.acc-h{padding:.6rem .85rem;background:linear-gradient(135deg,#faf5ff,#f3e8ff);cursor:pointer;font-weight:700;display:flex;justify-content:space-between;align-items:center;font-size:.88rem;transition:all .2s}
+.acc-h:hover{background:#f3e8ff}
+.acc-b{padding:0 .85rem;max-height:0;overflow:hidden;transition:all .35s}
+.acc-b.op{padding:.85rem;max-height:5000px}
+/* Dashboard */
+.dash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.7rem;margin:.7rem 0}
+.dash-card{background:var(--sf);border-radius:14px;padding:1rem;text-align:center;border:2px solid #e9d5ff;transition:all .3s}
+.dash-card:hover{transform:translateY(-3px);box-shadow:var(--sh)}
+.dash-num{font-size:1.8rem;font-weight:900;background:linear-gradient(135deg,var(--pink),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.dash-lbl{font-size:.75rem;font-weight:700;color:var(--tx2);text-transform:uppercase}
+/* Toast */
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);padding:.6rem 1.2rem;border-radius:14px;color:#fff;font-weight:800;font-size:.88rem;z-index:300;animation:toastIn .4s,toastOut .4s 2s forwards;box-shadow:0 8px 30px rgba(0,0,0,.2)}
+@keyframes toastIn{from{transform:translateX(-50%) translateY(30px) scale(.9);opacity:0}to{transform:translateX(-50%) translateY(0) scale(1);opacity:1}}
+@keyframes toastOut{to{transform:translateX(-50%) translateY(-20px) scale(.9);opacity:0}}
+/* Flashcard flip */
+.flip-card{perspective:800px;cursor:pointer;margin-bottom:.7rem}
+.flip-inner{transition:transform .6s;transform-style:preserve-3d;min-height:100px;position:relative}
+.flip-card.flipped .flip-inner{transform:rotateY(180deg)}
+.flip-front,.flip-back{position:absolute;width:100%;backface-visibility:hidden;border-radius:14px;padding:1rem;display:flex;align-items:center;justify-content:center;text-align:center;min-height:100px}
+.flip-front{background:linear-gradient(135deg,#fce7f3,#f3e8ff);border:2px solid #e9d5ff;font-weight:800;font-size:1rem;color:var(--purple)}
+.flip-back{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:2px solid #86efac;transform:rotateY(180deg);font-size:.88rem;color:#15803d;font-weight:600}
+footer{text-align:center;padding:1.5rem;background:linear-gradient(135deg,#fce7f3,#f3e8ff);border-top:2px solid #e9d5ff;font-size:.82rem;color:var(--tx2);font-weight:600}
+footer strong{color:var(--purple)}
+@media(max-width:600px){.nav-btn{font-size:.65rem;padding:.5rem .6rem}.concept-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}.dash-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="particles" id="particles"></div>
+<header>
+<h1><span class="emoji">💖</span> Insurance Math Interactive Mastery Lab <span class="emoji">✨</span></h1>
+<div class="stats">
+<span>⭐ <b id="sc">0</b> XP</span>
+<span>🔥 <b id="sk">0</b> streak</span>
+<span>💎 <b id="bc">0</b>/8 badges</span>
+<span>📊 <b id="ac">0</b>% accuracy</span>
+</div>
+<div class="xp-bar"><div class="xp-fill" id="xpBar"></div></div>
+</header>
+<nav>
+<button class="nav-btn on" onclick="go(0)">🏠 Welcome</button>
+<button class="nav-btn" onclick="go(1)">📚 Foundations</button>
+<button class="nav-btn" onclick="go(2)">🧮 Easy Math</button>
+<button class="nav-btn" onclick="go(3)">📈 Build Up</button>
+<button class="nav-btn" onclick="go(4)">🪪 Card Lab</button>
+<button class="nav-btn" onclick="go(5)">💪 Math Drill</button>
+<button class="nav-btn" onclick="go(6)">📅 Encounters</button>
+<button class="nav-btn" onclick="go(7)">📊 Dashboard</button>
+<button class="nav-btn" onclick="go(8)">⚡ Challenge</button>
+</nav>
+<main>
+<!-- ===== SEC 0: WELCOME ===== -->
+<div class="sec on" id="s0">
+<div class="card card-pink" style="text-align:center">
+<h2>Welcome, Future Billing Expert! 💖</h2>
+<p>Master insurance math step by step. Every concept builds on the last. Earn XP, unlock badges, and get CBCS-ready!</p>
+<div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin:.6rem 0">
+<span class="tag tag-pink">Interactive</span><span class="tag tag-purple">Step-by-Step</span><span class="tag tag-teal">Scored</span><span class="tag tag-blue">Exam Prep</span>
+</div>
+</div>
+<div class="card card-purple">
+<h3>Your Journey</h3>
+<div class="acc"><div class="acc-h" onclick="togA(this)">📚 Learn concepts with cute cards <span>+</span></div><div class="acc-b">Each term has a clickable card with a definition, example, and instant quiz.</div></div>
+<div class="acc"><div class="acc-h" onclick="togA(this)">🧮 Practice math step by step <span>+</span></div><div class="acc-b">Start simple, build up. Every answer shows the full math breakdown.</div></div>
+<div class="acc"><div class="acc-h" onclick="togA(this)">🪪 Read insurance cards like a pro <span>+</span></div><div class="acc-b">Simulated cards with real scenarios. Decide what to collect and verify!</div></div>
+<div class="acc"><div class="acc-h" onclick="togA(this)">⚡ Challenge yourself <span>+</span></div><div class="acc-b">Timed questions mixing everything. How fast can you calculate?</div></div>
+</div>
+<div class="badges">
+<div class="badge" id="b-start">🌟 Started</div>
+<div class="badge" id="b-concepts">📚 Concepts</div>
+<div class="badge" id="b-easy">🧮 Easy Math</div>
+<div class="badge" id="b-medium">📈 Level Up</div>
+<div class="badge" id="b-cards">🪪 Card Pro</div>
+<div class="badge" id="b-drill">💪 Drill Star</div>
+<div class="badge" id="b-encounters">📅 Tracker</div>
+<div class="badge" id="b-challenge">⚡ Champion</div>
+</div>
+<div style="text-align:center;margin-top:1rem">
+<button class="btn btn-pink" onclick="go(1);bdg('start')" style="font-size:1.05rem;padding:.8rem 2rem">🚀 Let's Go!</button>
+</div>
+</div>
+<!-- ===== SEC 1: FOUNDATIONS ===== -->
+<div class="sec" id="s1">
+<h2>📚 Insurance Foundations</h2>
+<p>Click each card to learn the term. Then answer the quiz below!</p>
+<div class="concept-grid" id="conceptGrid"></div>
+<div id="foundQuiz" style="margin-top:1rem"></div>
+<div id="s1_done" style="display:none" class="card card-green">
+<h3>✅ Foundations Complete!</h3>
+<button class="btn btn-purple" onclick="go(2);bdg('concepts')">Continue to Easy Math →</button>
+</div>
+</div>
+<!-- ===== SEC 2: EASY MATH ===== -->
+<div class="sec" id="s2">
+<h2>🧮 Simple Step-by-Step Math</h2>
+<div class="card card-blue">
+<p>Let's start with the simplest calculations. We'll show you every step!</p>
+</div>
+<div id="easyQs"></div>
+<div id="s2_done" style="display:none" class="card card-green">
+<h3>✅ Easy Math Complete!</h3>
+<button class="btn btn-purple" onclick="go(3);bdg('easy')">Level Up! →</button>
+</div>
+</div>
+<!-- ===== SEC 3: BUILD DIFFICULTY ===== -->
+<div class="sec" id="s3">
+<h2>📈 Build the Challenge</h2>
+<div class="card card-purple"><p>Now we combine deductible + coinsurance. Follow the steps!</p></div>
+<div id="medQs"></div>
+<div id="s3_done" style="display:none" class="card card-green">
+<h3>✅ Level Up Complete!</h3>
+<button class="btn btn-purple" onclick="go(4);bdg('medium')">Insurance Card Lab →</button>
+</div>
+</div>
+<!-- ===== SEC 4: INSURANCE CARD LAB ===== -->
+<div class="sec" id="s4">
+<h2>🪪 Insurance Card Scenario Lab</h2>
+<div id="cardScenarios"></div>
+<div id="s4_done" style="display:none" class="card card-green">
+<h3>✅ Card Lab Complete!</h3>
+<button class="btn btn-purple" onclick="go(5);bdg('cards')">Math Drill →</button>
+</div>
+</div>
+<!-- ===== SEC 5: DRILL ===== -->
+<div class="sec" id="s5">
+<h2>💪 CBCS Math Drill</h2>
+<div class="card card-pink"><p>20 rapid-fire questions. Show what you've learned!</p><p><b>Progress: <span id="drillProg">0</span>/20</b></p></div>
+<div id="drillQs"></div>
+<div id="s5_done" style="display:none" class="card card-green">
+<h3>✅ Drill Complete!</h3>
+<button class="btn btn-purple" onclick="go(6);bdg('drill')">Encounter Tracker →</button>
+</div>
+</div>
+<!-- ===== SEC 6: ENCOUNTERS ===== -->
+<div class="sec" id="s6">
+<h2>📅 Multiple Encounter Tracker</h2>
+<div class="card card-purple">
+<h3>Patient: Sarah Mitchell</h3>
+<p>Annual Deductible: <b>$1,000</b> | Coinsurance: <b>20%</b> | OOP Max: <b>$3,000</b></p>
+<p>Track how costs accumulate across 4 visits this year.</p>
+</div>
+<div class="card card-yellow">
+<h3>📊 Year-to-Date Status</h3>
+<div class="tracker"><div class="tracker-label"><span>Deductible</span><span id="dedTxt">$0 / $1,000</span></div><div class="tracker-bar"><div class="tracker-fill fill-pink" id="dedBar" style="width:0%"></div></div></div>
+<div class="tracker"><div class="tracker-label"><span>Out-of-Pocket</span><span id="oopTxt">$0 / $3,000</span></div><div class="tracker-bar"><div class="tracker-fill fill-purple" id="oopBar" style="width:0%"></div></div></div>
+</div>
+<div id="encArea"></div>
+<div id="s6_done" style="display:none" class="card card-green">
+<h3>✅ All Encounters Complete!</h3>
+<button class="btn btn-purple" onclick="go(7);bdg('encounters');buildDash()">View Dashboard →</button>
+</div>
+</div>
+<!-- ===== SEC 7: DASHBOARD ===== -->
+<div class="sec" id="s7">
+<h2>📊 Your Performance Dashboard</h2>
+<div class="dash-grid" id="dashGrid"></div>
+<div class="card card-pink" id="dashAdvice" style="text-align:center"></div>
+</div>
+<!-- ===== SEC 8: CHALLENGE ===== -->
+<div class="sec" id="s8">
+<h2>⚡ Timed Challenge Mode</h2>
+<div id="chStart" class="card card-purple" style="text-align:center">
+<h3>15 Mixed Questions — 90 seconds each!</h3>
+<p style="margin:.6rem 0"><b>Best: <span id="chBest">0</span>/15</b></p>
+<button class="btn btn-pink" onclick="startCh()" style="font-size:1rem;padding:.75rem 1.5rem">⚡ Start!</button>
+</div>
+<div id="chGo" style="display:none">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.7rem">
+<div class="timer" id="chClk">1:30</div>
+<div style="font-weight:800"><span id="chSc">0</span>/15 🔥<span id="chSk">0</span></div>
+</div>
+<div id="chQ" class="card"></div>
+</div>
+<div id="chRes" style="display:none" class="card card-green"></div>
+</div>
+</main>
+<footer>
+<p>Developed and Instructed by <strong>Hilary Homaii</strong></p>
+<p style="margin-top:.2rem;font-size:.72rem;color:var(--tx2)">Insurance Math Interactive Mastery Lab ✨</p>
+</footer>
+<script>
+// ===== AUDIO CONTEXT =====
+var audioCtx;
+function initAudio(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)()}
+function playTone(freq,dur,type){
+try{initAudio();var o=audioCtx.createOscillator(),g=audioCtx.createGain();o.connect(g);g.connect(audioCtx.destination);o.type=type||'sine';o.frequency.value=freq;g.gain.setValueAtTime(.08,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+dur);o.start();o.stop(audioCtx.currentTime+dur)}catch(e){}
+}
+function sndCorrect(){playTone(523,.1);setTimeout(function(){playTone(659,.1)},100);setTimeout(function(){playTone(784,.15)},200)}
+function sndWrong(){playTone(200,.3,'sawtooth')}
+function sndBadge(){playTone(523,.1);setTimeout(function(){playTone(659,.1)},80);setTimeout(function(){playTone(784,.1)},160);setTimeout(function(){playTone(1047,.2)},240)}
+function sndClick(){playTone(440,.05)}
+
+// ===== PARTICLES =====
+(function(){var c=document.getElementById('particles');var colors=['#ec4899','#a855f7','#3b82f6','#14b8a6','#fbbf24','#22c55e'];for(var i=0;i<20;i++){var p=document.createElement('div');p.className='particle';var s=Math.random()*8+4;p.style.cssText='width:'+s+'px;height:'+s+'px;left:'+Math.random()*100+'%;background:'+colors[Math.floor(Math.random()*colors.length)]+';animation-duration:'+(Math.random()*15+10)+'s;animation-delay:'+(Math.random()*10)+'s;border-radius:'+(Math.random()>.5?'50%':'3px');c.appendChild(p)}})();
+
+// ===== STATE =====
+var G={sc:0,sk:0,total:0,correct:0,bg:{},chBest:0};
+function E(id){return document.getElementById(id)}
+function go(i){document.querySelectorAll('.sec').forEach(function(s){s.classList.remove('on')});E('s'+i).classList.add('on');document.querySelectorAll('.nav-btn').forEach(function(b,j){b.classList.toggle('on',j===i)});window.scrollTo(0,0);sndClick()}
+function pts(n){G.sc+=n;G.sk++;G.correct++;G.total++;E('sc').textContent=G.sc;E('sk').textContent=G.sk;E('ac').textContent=G.total?Math.round(G.correct/G.total*100):0;E('xpBar').style.width=Math.min(100,G.sc/500*100)+'%'}
+function miss(){G.sk=0;G.total++;E('sk').textContent=0;E('ac').textContent=G.total?Math.round(G.correct/G.total*100):0}
+function bdg(id){if(G.bg[id])return;G.bg[id]=true;var el=E('b-'+id);if(el)el.classList.add('got');E('bc').textContent=Object.keys(G.bg).length;sndBadge();toast('🏅 Badge Unlocked!','linear-gradient(135deg,#fbbf24,#f97316)')}
+function toast(m,bg){var t=document.createElement('div');t.className='toast';t.style.background=bg||'linear-gradient(135deg,#a855f7,#ec4899)';t.textContent=m;document.body.appendChild(t);setTimeout(function(){t.remove()},2500)}
+function confetti(){for(var i=0;i<30;i++){var c=document.createElement('div');c.className='confetti-piece';var colors=['#ec4899','#a855f7','#3b82f6','#14b8a6','#fbbf24','#22c55e','#f97316'];c.style.cssText='left:'+Math.random()*100+'%;top:-10px;background:'+colors[Math.floor(Math.random()*colors.length)]+';animation-duration:'+(Math.random()*2+1.5)+'s;border-radius:'+(Math.random()>.5?'50%':'2px')+';width:'+(Math.random()*8+5)+'px;height:'+(Math.random()*8+5)+'px';document.body.appendChild(c);setTimeout(function(){c.remove()},4000)}}
+function togA(el){var b=el.nextElementSibling;var o=b.classList.toggle('op');el.querySelector('span').textContent=o?'−':'+'}
+
+// ===== QUIZ ENGINE =====
+var answered={};
+function mkQ(id,q,after){
+var c=E(id);if(!c)return;
+var h='<div class="qq">'+q.q+'</div>';
+q.o.forEach(function(o,i){h+='<button class="qo" data-i="'+i+'">'+o+'</button>'});
+h+='<div class="fb" id="'+id+'_f"></div>';
+if(q.math)h+='<div class="math-box" id="'+id+'_m" style="display:none">'+q.math+'</div>';
+c.innerHTML=h;
+c.querySelectorAll('.qo').forEach(function(b){
+b.addEventListener('click',function(){
+if(answered[id])return;answered[id]=true;
+var ch=parseInt(b.getAttribute('data-i'));
+c.querySelectorAll('.qo').forEach(function(x,j){x.classList.add('x');if(j===q.a)x.classList.add('y');if(j===ch&&j!==q.a)x.classList.add('n')});
+var f=E(id+'_f');var m=E(id+'_m');
+if(ch===q.a){f.className='fb v y';f.innerHTML='✅ Correct! +10 XP<br>'+q.r;pts(10);sndCorrect();confetti()}
+else{f.className='fb v n';f.innerHTML='❌ '+q.r;miss();sndWrong()}
+if(m)m.style.display='block';
+if(after)after();
+})});
+}
+
+// ===== SEC 1: FOUNDATIONS =====
+var concepts=[
+{icon:'💵',title:'Premium',def:'The monthly payment to KEEP your insurance active. Think of it like a subscription fee. You pay it whether you see a doctor or not.'},
+{icon:'🎯',title:'Deductible',def:'The amount YOU pay first before insurance starts helping. Example: $1,000 deductible means you pay the first $1,000 of medical bills each year.'},
+{icon:'🏷️',title:'Copay',def:'A fixed amount you pay at the time of service. Example: $30 copay means you pay $30 for an office visit, regardless of the total bill.'},
+{icon:'📊',title:'Coinsurance',def:'Your percentage share AFTER the deductible is met. Example: 20% coinsurance means you pay 20% and insurance pays 80%.'},
+{icon:'✅',title:'Allowed Amount',def:'The maximum amount the insurance agrees to pay for a service. If a doctor charges $200 but allowed amount is $150, the calculation is based on $150.'},
+{icon:'🛡️',title:'OOP Maximum',def:'The MOST you pay in a year. Once reached, insurance pays 100%. Includes deductible, copays, and coinsurance. Premiums do NOT count.'}
+];
+(function(){
+var g=E('conceptGrid');
+concepts.forEach(function(c,i){
+var d=document.createElement('div');d.className='concept-card';
+d.innerHTML='<div class="icon">'+c.icon+'</div><div class="title">'+c.title+'</div><div class="def">'+c.def+'</div>';
+d.addEventListener('click',function(){sndClick();d.classList.toggle('open')});
+g.appendChild(d);
+});
+var fq=E('foundQuiz');
+var qs=[
+{q:'Which payment keeps your insurance active even if you never see a doctor?',o:['Deductible','Copay','Premium','Coinsurance'],a:2,r:'Premium is your monthly subscription to keep coverage active.'},
+{q:'A $500 deductible means:',o:['You pay $500/month','Insurance pays $500 first','You pay the first $500 before insurance helps','Your copay is $500'],a:2,r:'Deductible = the amount YOU pay first each year before insurance kicks in.'},
+{q:'What is a copay?',o:['A percentage of the bill','A fixed dollar amount at time of service','Your monthly bill','The doctor\'s full charge'],a:1,r:'Copay is a fixed, flat amount (e.g., $30) you pay at the visit.'},
+{q:'20% coinsurance means:',o:['You pay $20','Insurance pays 20%','You pay 20% after deductible','You pay 20% of premium'],a:2,r:'Coinsurance is YOUR percentage share after the deductible is met.'},
+{q:'Allowed amount is $150 but doctor charges $200. Math is based on:',o:['$200','$150','$50','$175'],a:1,r:'Calculations always use the ALLOWED amount, not the billed charge.'},
+{q:'Once OOP max is reached:',o:['You still pay coinsurance','Insurance pays 100%','Coverage ends','Deductible resets'],a:1,r:'After OOP max, insurance covers everything for the rest of the year.'}
+];
+var done=0;
+qs.forEach(function(q,i){
+var div=document.createElement('div');div.id='fq'+i;fq.appendChild(div);
+mkQ('fq'+i,q,function(){done++;if(done>=qs.length)E('s1_done').style.display='block'});
+});
+})();
+
+// ===== SEC 2: EASY MATH =====
+(function(){
+var c=E('easyQs');var done=0;
+var qs=[
+{q:'Allowed Amount = $100 | Copay = $20<br>💡 How much does the patient pay at check-in?',o:['$100','$80','$20','$0'],a:2,r:'With a copay, the patient pays the fixed copay amount. $20 copay = patient pays $20.',math:'<div class="math-step"><span class="label">Copay (fixed)</span><span>$20</span></div><div class="math-step"><span class="label">Patient pays</span><span>= $20 ✨</span></div>'},
+{q:'Allowed Amount = $150 | Deductible remaining = $150<br>💡 How much does the patient owe?',o:['$0','$75','$150','$300'],a:2,r:'The entire allowed amount goes toward the unmet deductible. Patient pays $150.',math:'<div class="math-step"><span class="label">Allowed amount</span><span>$150</span></div><div class="math-step"><span class="label">Deductible remaining</span><span>$150</span></div><div class="math-step"><span class="label">Applied to deductible</span><span>$150</span></div><div class="math-step"><span class="label">Patient pays</span><span>= $150 ✨</span></div>'},
+{q:'Allowed Amount = $200 | Deductible already met | Coinsurance = 20%<br>💡 Patient pays:',o:['$200','$40','$160','$20'],a:1,r:'Deductible is met, so we go straight to coinsurance. $200 × 20% = $40.',math:'<div class="math-step"><span class="label">Allowed amount</span><span>$200</span></div><div class="math-step"><span class="label">Deductible</span><span>Already met ✓</span></div><div class="math-step"><span class="label">Coinsurance 20%</span><span>$200 × 0.20</span></div><div class="math-step"><span class="label">Patient pays</span><span>= $40 ✨</span></div>'},
+{q:'Allowed Amount = $300 | Coinsurance = 30% | Deductible met<br>💡 Insurance pays:',o:['$90','$300','$210','$30'],a:2,r:'Patient pays 30% = $90. Insurance pays 70% = $300 × 0.70 = $210.',math:'<div class="math-step"><span class="label">Allowed amount</span><span>$300</span></div><div class="math-step"><span class="label">Patient 30%</span><span>$300 × 0.30 = $90</span></div><div class="math-step"><span class="label">Insurance 70%</span><span>$300 × 0.70</span></div><div class="math-step"><span class="label">Insurance pays</span><span>= $210 ✨</span></div>'}
+];
+qs.forEach(function(q,i){var d=document.createElement('div');d.id='eq'+i;c.appendChild(d);mkQ('eq'+i,q,function(){done++;if(done>=qs.length)E('s2_done').style.display='block'})});
+})();
+
+// ===== SEC 3: MEDIUM =====
+(function(){
+var c=E('medQs');var done=0;
+var qs=[
+{q:'Allowed = $500 | Deductible remaining = $100 | Coinsurance = 20%<br>💡 Total patient responsibility?',o:['$100','$180','$500','$80'],a:1,r:'Step 1: $100 to deductible. Step 2: $400 remaining × 20% = $80. Total: $100 + $80 = $180.',math:'<div class="math-step"><span class="label">Allowed amount</span><span>$500</span></div><div class="math-step"><span class="label">→ Deductible</span><span>$100</span></div><div class="math-step"><span class="label">Remaining</span><span>$500 − $100 = $400</span></div><div class="math-step"><span class="label">Coinsurance 20%</span><span>$400 × 0.20 = $80</span></div><div class="math-step"><span class="label">Total patient owes</span><span>$100 + $80 = $180 ✨</span></div>'},
+{q:'Allowed = $1,000 | Deductible remaining = $500 | Coinsurance = 20%<br>💡 Patient pays:',o:['$500','$600','$200','$1,000'],a:1,r:'$500 to deductible + ($500 × 20% = $100) = $600 total.',math:'<div class="math-step"><span class="label">Allowed</span><span>$1,000</span></div><div class="math-step"><span class="label">→ Deductible</span><span>$500</span></div><div class="math-step"><span class="label">Remaining</span><span>$500</span></div><div class="math-step"><span class="label">Coins. 20%</span><span>$500 × 0.20 = $100</span></div><div class="math-step"><span class="label">Patient total</span><span>$500 + $100 = $600 ✨</span></div>'},
+{q:'Allowed = $800 | Deductible remaining = $0 | Coinsurance = 25%<br>💡 Patient pays:',o:['$800','$600','$200','$0'],a:2,r:'Deductible met. $800 × 25% = $200.',math:'<div class="math-step"><span class="label">Allowed</span><span>$800</span></div><div class="math-step"><span class="label">Deductible</span><span>Met ✓</span></div><div class="math-step"><span class="label">Coins. 25%</span><span>$800 × 0.25</span></div><div class="math-step"><span class="label">Patient pays</span><span>= $200 ✨</span></div>'},
+{q:'Allowed = $2,000 | Deductible remaining = $300 | Coinsurance = 20% | OOP remaining = $100<br>💡 Patient pays:',o:['$640','$300','$100','$400'],a:2,r:'Normally $300 + ($1700×20%=$340) = $640. But OOP remaining is only $100, so patient pays $100 max.',math:'<div class="math-step"><span class="label">Normal calc</span><span>$300 + $340 = $640</span></div><div class="math-step"><span class="label">But OOP remaining</span><span>$100</span></div><div class="math-step"><span class="label">OOP cap applies!</span><span>Patient pays max $100</span></div><div class="math-step"><span class="label">Patient pays</span><span>= $100 ✨</span></div>'}
+];
+qs.forEach(function(q,i){var d=document.createElement('div');d.id='mq'+i;c.appendChild(d);mkQ('mq'+i,q,function(){done++;if(done>=qs.length)E('s3_done').style.display='block'})});
+})();
+
+// ===== SEC 4: CARD LAB =====
+(function(){
+var c=E('cardScenarios');var done=0;
+var scenarios=[
+{card:{plan:'BlueCross HMO',name:'GARCIA, MARIA',id:'BCH-449021',copay:'$30 PCP / $50 Specialist',ded:'$750',coins:'20%',ref:'Required',auth:'Required for imaging',status:'Active',type:'hmo'},
+q:'Patient needs an MRI. Referral is on file. What should you verify next?',o:['Collect copay only','Verify prior authorization for imaging','Schedule without checking','Call the patient\'s employer'],a:1,r:'HMO plans require authorization for imaging. Even with a referral, auth must be confirmed before the MRI.'},
+{card:{plan:'Aetna PPO',name:'SMITH, JAMES',id:'AET-882103',copay:'$25 PCP / $40 Specialist',ded:'$1,000',coins:'20%',ref:'Not required',auth:'Not required',status:'Active',type:'ppo'},
+q:'Patient sees a specialist. Deductible is met. What do you collect?',o:['$25','$40','$1,000','Nothing'],a:1,r:'PPO specialist copay is $40. Deductible is already met, so just collect the specialist copay.'},
+{card:{plan:'United HMO',name:'WILSON, TANYA',id:'UHC-330291',copay:'$35 PCP',ded:'$500',coins:'25%',ref:'Required',auth:'Required',status:'Inactive',type:'hmo'},
+q:'Patient presents for PCP visit. What is the FIRST issue?',o:['Collect $35 copay','Check referral','Coverage is INACTIVE — cannot bill','Verify authorization'],a:2,r:'Always verify coverage status first! This plan is INACTIVE. You cannot bill an inactive plan.'}
+];
+scenarios.forEach(function(s,i){
+var div=document.createElement('div');div.className='card card-blue';
+var chipClass=s.card.status==='Active'?'chip-active':'chip-inactive';
+var typeChip=s.card.type==='hmo'?'chip-hmo':'chip-ppo';
+div.innerHTML='<div class="ins-card"><h4>🪪 Insurance Card</h4><div class="plan-name">'+s.card.plan+'</div><div class="row"><span class="lbl">Member</span><span class="val">'+s.card.name+'</span></div><div class="row"><span class="lbl">ID</span><span class="val">'+s.card.id+'</span></div><div class="row"><span class="lbl">Copay</span><span class="val">'+s.card.copay+'</span></div><div class="row"><span class="lbl">Deductible</span><span class="val">'+s.card.ded+'</span></div><div class="row"><span class="lbl">Coinsurance</span><span class="val">'+s.card.coins+'</span></div><div class="row"><span class="lbl">Referral</span><span class="val">'+s.card.ref+'</span></div><div class="row"><span class="lbl">Auth</span><span class="val">'+s.card.auth+'</span></div><div><span class="chip '+chipClass+'">'+s.card.status+'</span> <span class="chip '+typeChip+'">'+s.card.type.toUpperCase()+'</span></div></div><div id="cq'+i+'" style="margin-top:.7rem"></div>';
+c.appendChild(div);
+mkQ('cq'+i,{q:s.q,o:s.o,a:s.a,r:s.r},function(){done++;if(done>=scenarios.length)E('s4_done').style.display='block'});
+});
+})();
+
+// ===== SEC 5: DRILL =====
+(function(){
+var c=E('drillQs');var done=0;
+var qs=[
+{q:'Copay = $25. Patient pays:',o:['$0','$25','$50','Depends'],a:1,r:'Copay is a flat amount. $25.'},
+{q:'Allowed = $200, ded remaining = $200. Patient pays:',o:['$0','$100','$200','$400'],a:2,r:'Entire amount goes to unmet deductible.'},
+{q:'Allowed = $300, ded met, coins = 20%. Patient:',o:['$300','$60','$240','$30'],a:1,r:'$300 × 20% = $60.'},
+{q:'Allowed = $400, ded remaining = $100, coins = 20%. Patient:',o:['$160','$100','$400','$80'],a:0,r:'$100 ded + ($300 × 20% = $60) = $160.'},
+{q:'Allowed = $150, ded remaining = $50, coins = 30%. Patient:',o:['$80','$150','$50','$30'],a:0,r:'$50 ded + ($100 × 30% = $30) = $80.'},
+{q:'OOP max reached. Allowed = $500. Patient pays:',o:['$500','$100','$50','$0'],a:3,r:'Once OOP max is reached, insurance pays 100%.'},
+{q:'Allowed = $250, coins = 20%, ded met. Insurance pays:',o:['$250','$50','$200','$0'],a:2,r:'Insurance pays 80%: $250 × 0.80 = $200.'},
+{q:'Specialist copay = $50. Visit is out-of-network. What happens?',o:['Pay $50 copay','Higher cost or not covered','Free visit','Pay premium'],a:1,r:'Out-of-network typically means higher costs or no coverage.'},
+{q:'Allowed = $600, ded remaining = $600. Coins = 20%. Patient:',o:['$120','$600','$480','$720'],a:1,r:'All $600 goes to deductible. Nothing left for coinsurance. Patient = $600.'},
+{q:'Allowed = $1,000, ded = $0, coins = 10%. Patient:',o:['$100','$900','$1,000','$10'],a:0,r:'Ded met. $1,000 × 10% = $100.'},
+{q:'Monthly premium = $350. Annual cost:',o:['$350','$3,500','$4,200','$700'],a:2,r:'$350 × 12 = $4,200/year.'},
+{q:'Allowed = $180, copay = $30. Insurance gets:',o:['$180','$150','$30','$210'],a:1,r:'$180 − $30 copay = $150 for insurance to process.'},
+{q:'Ded = $1,000. Patient has paid $800. Remaining:',o:['$1,000','$800','$200','$0'],a:2,r:'$1,000 − $800 = $200 remaining.'},
+{q:'Allowed = $500, ded remaining = $200, coins = 25%. Patient:',o:['$275','$200','$500','$125'],a:0,r:'$200 ded + ($300 × 25% = $75) = $275.'},
+{q:'Billed = $300, allowed = $200, coins = 20%, ded met. Patient:',o:['$60','$40','$300','$200'],a:1,r:'Use ALLOWED amount. $200 × 20% = $40.'},
+{q:'Allowed = $400, coins = 20%, ded met, OOP remaining = $50. Patient:',o:['$80','$50','$400','$0'],a:1,r:'Normal = $80. But OOP cap = $50. Patient pays $50.'},
+{q:'HMO patient sees specialist without referral. Result:',o:['Claim paid normally','Claim may deny','Patient gets discount','Copay waived'],a:1,r:'HMO requires referrals for specialists. No referral = likely denial.'},
+{q:'Coins = 30%. Insurance pays what %?',o:['30%','70%','100%','50%'],a:1,r:'If patient pays 30%, insurance pays the other 70%.'},
+{q:'Allowed = $750, ded remaining = $250, coins = 20%. Total patient:',o:['$350','$250','$150','$500'],a:0,r:'$250 ded + ($500 × 20% = $100) = $350.'},
+{q:'Which does NOT count toward OOP max?',o:['Deductible','Copays','Premiums','Coinsurance'],a:2,r:'Premiums never count toward OOP maximum.'}
+];
+qs.forEach(function(q,i){var d=document.createElement('div');d.id='dq'+i;c.appendChild(d);mkQ('dq'+i,q,function(){done++;E('drillProg').textContent=done;if(done>=qs.length)E('s5_done').style.display='block'})});
+})();
+
+// ===== SEC 6: ENCOUNTERS =====
+(function(){
+var c=E('encArea');
+var plan={ded:1000,coins:.20,oop:3000};
+var encs=[
+{title:'Encounter 1: Annual Physical',allowed:250,desc:'Preventive visit + lab work'},
+{title:'Encounter 2: Urgent Care',allowed:600,desc:'Fell at home, X-ray needed'},
+{title:'Encounter 3: Specialist Visit',allowed:400,desc:'Orthopedic follow-up'},
+{title:'Encounter 4: Surgery',allowed:3000,desc:'Knee arthroscopy'}
+];
+var dedPaid=0,oopPaid=0,current=0;
+
+function renderEnc(i){
+if(i>=encs.length){E('s6_done').style.display='block';return}
+var en=encs[i];
+var dedRem=Math.max(0,plan.ded-dedPaid);
+var oopRem=Math.max(0,plan.oop-oopPaid);
+var toDed=Math.min(en.allowed,dedRem);
+var afterDed=en.allowed-toDed;
+var coinsAmt=afterDed*plan.coins;
+var patTotal=toDed+coinsAmt;
+if(patTotal>oopRem)patTotal=oopRem;
+var answers=[
+Math.round(patTotal),
+Math.round(patTotal*1.5),
+Math.round(en.allowed),
+Math.round(patTotal*0.5)
+];
+var correctVal=answers[0];
+// Shuffle
+var indexed=answers.map(function(v,j){return{v:v,orig:j}});
+indexed.sort(function(){return Math.random()-.5});
+var correctIdx=indexed.findIndex(function(x){return x.orig===0});
+var opts=indexed.map(function(x){return '$'+x.v});
+
+var div=document.createElement('div');div.className='card card-yellow';div.id='enc'+i;
+div.innerHTML='<h3>'+en.title+'</h3><p>'+en.desc+'</p><p><b>Allowed Amount:</b> $'+en.allowed+'</p><p><b>Deductible remaining:</b> $'+dedRem+' | <b>OOP remaining:</b> $'+oopRem+'</p><div id="encq'+i+'"></div>';
+c.appendChild(div);
+mkQ('encq'+i,{q:'How much does the patient owe for this encounter?',o:opts,a:correctIdx,r:'Deductible portion: $'+toDed+' | After ded: $'+afterDed+' × '+plan.coins*100+'% = $'+Math.round(coinsAmt)+' | Total: $'+Math.round(patTotal)+(patTotal>=oopRem?' (OOP cap applied!)':''),math:'<div class="math-step"><span class="label">Applied to ded</span><span>$'+toDed+'</span></div><div class="math-step"><span class="label">After ded</span><span>$'+afterDed+'</span></div><div class="math-step"><span class="label">Coinsurance '+plan.coins*100+'%</span><span>$'+Math.round(coinsAmt)+'</span></div><div class="math-step"><span class="label">Patient total</span><span>$'+Math.round(patTotal)+' ✨</span></div>'},function(){
+dedPaid+=toDed;
+oopPaid+=Math.round(patTotal);
+E('dedTxt').textContent='$'+dedPaid+' / $'+plan.ded;
+E('dedBar').style.width=Math.min(100,dedPaid/plan.ded*100)+'%';
+E('oopTxt').textContent='$'+oopPaid+' / $'+plan.oop;
+E('oopBar').style.width=Math.min(100,oopPaid/plan.oop*100)+'%';
+current++;
+setTimeout(function(){renderEnc(current)},500);
+});
+}
+renderEnc(0);
+})();
+
+// ===== SEC 7: DASHBOARD =====
+function buildDash(){
+var pct=G.total?Math.round(G.correct/G.total*100):0;
+E('dashGrid').innerHTML='<div class="dash-card"><div class="dash-num">'+G.sc+'</div><div class="dash-lbl">Total XP</div></div><div class="dash-card"><div class="dash-num">'+G.correct+'/'+G.total+'</div><div class="dash-lbl">Correct</div></div><div class="dash-card"><div class="dash-num">'+pct+'%</div><div class="dash-lbl">Accuracy</div></div><div class="dash-card"><div class="dash-num">'+Object.keys(G.bg).length+'/8</div><div class="dash-lbl">Badges</div></div><div class="dash-card"><div class="dash-num">'+G.bst+'</div><div class="dash-lbl">Best Streak</div></div>';
+var advice=pct>=90?'🏆 Amazing! You\'re CBCS ready!':pct>=75?'🌟 Great work! Review tricky areas.':pct>=50?'📚 Good progress! Practice more math drills.':'💪 Keep going! Review foundations and try again.';
+E('dashAdvice').innerHTML='<h3>'+advice+'</h3><button class="btn btn-pink" onclick="go(8)" style="margin-top:.5rem">Try Challenge Mode! ⚡</button>';
+}
+
+// ===== SEC 8: CHALLENGE =====
+var chPool=[
+{q:'Copay = $40. Patient pays:',o:['$40','$80','$0','$20'],a:0,r:'Flat copay = $40.'},
+{q:'Allowed $300, ded met, coins 20%. Patient:',o:['$300','$240','$60','$30'],a:2,r:'$300 × 20% = $60.'},
+{q:'Allowed $500, ded rem $200, coins 20%. Patient:',o:['$260','$500','$200','$100'],a:0,r:'$200 + ($300×20%=$60) = $260.'},
+{q:'OOP max hit. Patient pays:',o:['Copay only','$0','Coinsurance','Full amount'],a:1,r:'Insurance pays 100% after OOP max.'},
+{q:'Premium = $400/mo. Annual:',o:['$4,800','$400','$4,000','$2,400'],a:0,r:'$400 × 12 = $4,800.'},
+{q:'HMO — no referral to specialist:',o:['Paid normally','May deny','50% covered','Free visit'],a:1,r:'HMO requires referrals.'},
+{q:'Billed $400, allowed $250, coins 20%, ded met:',o:['$80','$50','$400','$250'],a:1,r:'Use allowed: $250 × 20% = $50.'},
+{q:'Ded $1,000, paid $1,000. Remaining:',o:['$1,000','$500','$0','$200'],a:2,r:'Fully met.'},
+{q:'Coins 30%. Insurance pays:',o:['30%','70%','100%','50%'],a:1,r:'100% − 30% = 70%.'},
+{q:'Allowed $200, ded rem $200. Patient:',o:['$0','$100','$200','$400'],a:2,r:'All to deductible.'},
+{q:'Which doesn\'t count toward OOP?',o:['Deductible','Premiums','Copays','Coinsurance'],a:1,r:'Premiums excluded.'},
+{q:'Allowed $600, ded rem $100, coins 25%:',o:['$225','$600','$100','$150'],a:0,r:'$100+($500×25%=$125)=$225.'},
+{q:'Inactive coverage. First step:',o:['Collect copay','Bill insurance','Cannot bill — verify coverage','Send to collections'],a:2,r:'Always verify active status first.'},
+{q:'Allowed $1,200, ded met, coins 20%, OOP rem $100:',o:['$240','$100','$1,200','$0'],a:1,r:'Normal=$240, but OOP cap=$100.'},
+{q:'Auth required for MRI. Not obtained. Result:',o:['MRI covered','Claim may deny','Patient gets refund','No effect'],a:1,r:'Missing auth = likely denial.'}
+];
+
+var CH={on:false,qs:[],i:0,sc:0,sk:0,tmr:null,sec:90,ans:[]};
+function startCh(){
+CH={on:true,qs:chPool.slice().sort(function(){return Math.random()-.5}).slice(0,15),i:0,sc:0,sk:0,tmr:null,sec:90,ans:[]};
+E('chStart').style.display='none';E('chRes').style.display='none';E('chGo').style.display='block';
+E('chSc').textContent='0';E('chSk').textContent='0';
+showChQ();CH.tmr=setInterval(chTick,1000);
+}
+function chTick(){
+CH.sec--;var m=Math.floor(CH.sec/60),s=CH.sec%60;
+var d=E('chClk');d.textContent=m+':'+String(s).padStart(2,'0');
+d.className='timer'+(CH.sec<=15?' danger':CH.sec<=30?' warn':'');
+if(CH.sec<=0){chTimeout()}
+}
+function chTimeout(){
+CH.ans.push({q:CH.qs[CH.i].q,ok:false,ai:CH.qs[CH.i].a,ci:-1,o:CH.qs[CH.i].o});
+CH.i++;CH.sec=90;
+if(CH.i>=CH.qs.length){endCh()}else{showChQ()}
+}
+function showChQ(){
+if(CH.i>=CH.qs.length){endCh();return}
+CH.sec=90;
+var q=CH.qs[CH.i];
+var h='<div class="qq"><span class="tag tag-purple">Q'+(CH.i+1)+'/15</span> '+q.q+'</div>';
+q.o.forEach(function(o,i){h+='<button class="qo" data-i="'+i+'">'+o+'</button>'});
+h+='<div class="fb" id="chf"></div>';
+E('chQ').innerHTML=h;
+E('chQ').querySelectorAll('.qo').forEach(function(b){
+b.addEventListener('click',function(){chAns(parseInt(b.getAttribute('data-i')),q.a)});
+});
+}
+function chAns(ch,a){
+var btns=E('chQ').querySelectorAll('.qo');
+btns.forEach(function(b,i){b.classList.add('x');b.onclick=null;if(i===a)b.classList.add('y');if(i===ch&&i!==a)b.classList.add('n')});
+var f=E('chf'),q=CH.qs[CH.i];
+if(ch===a){CH.sc++;CH.sk++;f.className='fb v y';f.innerHTML='✅ Correct!';pts(15);sndCorrect()}
+else{CH.sk=0;f.className='fb v n';f.innerHTML='❌ '+q.r;miss();sndWrong()}
+CH.ans.push({q:q.q,ok:ch===a,ai:a,ci:ch,o:q.o});
+E('chSc').textContent=CH.sc;E('chSk').textContent=CH.sk;
+CH.i++;setTimeout(showChQ,1000);
+}
+function endCh(){
+clearInterval(CH.tmr);CH.on=false;
+E('chGo').style.display='none';E('chRes').style.display='block';
+if(CH.sc>G.chBest)G.chBest=CH.sc;E('chBest').textContent=G.chBest;
+var p=Math.round(CH.sc/15*100);
+var g=p>=90?'🏆 Insurance Math Champion!':p>=75?'🌟 Excellent!':p>=50?'👍 Good effort!':'📚 Keep practicing!';
+var h='<h3 style="text-align:center">'+g+'</h3><p style="text-align:center;font-size:1.3rem;font-weight:900">'+CH.sc+'/15 ('+p+'%)</p>';
+var mi=CH.ans.filter(function(a){return !a.ok});
+if(mi.length){h+='<h4 style="margin-top:.7rem">Missed:</h4>';mi.forEach(function(a){h+='<div class="card card-yellow" style="padding:.6rem;margin:.3rem 0"><p style="font-weight:700;font-size:.83rem">'+a.q+'</p>'+(a.ci>=0?'<p style="color:var(--red);font-size:.8rem">You: '+a.o[a.ci]+'</p>':'<p style="color:var(--red);font-size:.8rem">Time ran out</p>')+'<p style="color:var(--green);font-size:.8rem">✅ '+a.o[a.ai]+'</p></div>'})}
+h+='<div style="text-align:center;margin-top:.7rem"><button class="btn btn-pink" onclick="startCh()">🔄 Try Again</button> <button class="btn btn-purple" onclick="go(7);buildDash()">📊 Dashboard</button></div>';
+E('chRes').innerHTML=h;
+if(p>=75)bdg('challenge');
+confetti();
+}
+</script>
+</body>
+</html></parameter>
+</invoke>
+</tool_calls>
+<tool_calls>
+<invoke name="present_files">
+<parameter name="filepaths">["/mnt/user-data/outputs/insurance-math-lab.html"]</parameter>
+</invoke>
+</tool_calls>
